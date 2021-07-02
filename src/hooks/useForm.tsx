@@ -2,13 +2,17 @@ import React, { ChangeEvent, useState } from 'react';
 
 type FormPayload = {
   initialValues: any;
-  onSubmit?: () => void
+  onSubmit: () => void;
+  validations?: any;
 }
+
 export const useForm = ({
   initialValues,
-  onSubmit
+  onSubmit,
+  validations
 }: FormPayload) => {
-  const [data, setData] = useState(initialValues || {});
+  const [data, setData] = useState(initialValues);
+  const [errors, setErrors] = useState<any>({});
 
   const handleChange = (
     key: any,
@@ -23,6 +27,35 @@ export const useForm = ({
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+
+    if (validations) {
+      let valid = true;
+      const newErrors = {} as any;
+      for (const key in validations) {
+        const value = data[key];
+        const {
+          required,
+          pattern
+        } = validations[key];
+        if (value in required) {
+          valid = false;
+          newErrors[key] = required.message;
+        }
+
+        if (pattern?.value && !RegExp(pattern.value).test(value)) {
+          valid = false;
+          newErrors[key] = pattern.message;
+        }
+      }
+
+      if (!valid) {
+        setErrors(newErrors);
+        return;
+      }
+    }
+
+    setErrors({});
+
     if (onSubmit) onSubmit();
   };
 
@@ -30,5 +63,6 @@ export const useForm = ({
     data,
     handleChange,
     handleSubmit,
+    errors
   };
 };

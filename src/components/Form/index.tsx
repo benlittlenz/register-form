@@ -8,7 +8,31 @@ export function Form() {
     handleSubmit,
     handleChange,
     data,
+    errors,
   } = useForm({
+    validations: {
+      card: {
+        pattern: {
+          value: '^[0-9]',
+          message:
+            "Card number must only contains numbers",
+        },
+      },
+      cvc: {
+        pattern: {
+          value: '^[0-9]',
+          message:
+            "CVC number must only contains numbers",
+        },
+      },
+      expiry: {
+        pattern: {
+          value: '^[0-9]',
+          message:
+            "Expiry date must only contains numbers",
+        },
+      },
+    },
     onSubmit: () => console.log('subbmited', data),
     initialValues: {
       card: '',
@@ -16,7 +40,7 @@ export function Form() {
       expiry: ''
     },
   });
-
+  console.log("ERRORS: ", errors)
   return (
     <div className="form">
       <h1 className="form__heading">Welcome, Ben Little</h1>

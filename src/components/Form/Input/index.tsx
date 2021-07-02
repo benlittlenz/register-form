@@ -19,7 +19,6 @@ export function Input({ value, onChange, width, type, placeholder }: InputProps)
           placeholder={placeholder}
           value={value}
           onChange={onChange}
-          required
         />
         <span className="error-message" aria-live="polite"></span>
       </label>
