@@ -1,11 +1,5 @@
 import React, { ChangeEvent, useState } from 'react';
 
-type FormPayload = {
-  initialValues: any;
-  onSubmit: () => void;
-  validations?: any;
-}
-
 export const useForm = ({
   initialValues,
   onSubmit,
@@ -37,7 +31,7 @@ export const useForm = ({
           required,
           pattern
         } = validations[key];
-        if (value in required) {
+        if (required?.value && !value) {
           valid = false;
           newErrors[key] = required.message;
         }
