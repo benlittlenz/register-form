@@ -1,12 +1,8 @@
 .menu {
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  background-color: ghostwhite;
-}
-
-.menu__heading {
-  margin: 0 auto;
-  font-size: 18px;
-  font-weight: 800;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background-color: whitesmoke;
+  z-index: 1;
+  padding: 8rem 0;
 }

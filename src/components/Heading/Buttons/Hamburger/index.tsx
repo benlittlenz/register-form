@@ -1,11 +1,11 @@
 import './index.css'
+
 type HamburgerProps = {
-  open: boolean;
   setOpen: (t: boolean) => void;
 };
 
-export const Hamburger = ({ open, setOpen }: HamburgerProps) => (
-  <button onClick={() => setOpen(!open)}>
+export const Hamburger = ({ setOpen }: HamburgerProps) => (
+  <button onClick={() => setOpen(true)}>
     <div />
     <div />
     <div />

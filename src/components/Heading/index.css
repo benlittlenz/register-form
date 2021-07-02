@@ -1,0 +1,12 @@
+.nav {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  background-color: ghostwhite;
+}
+
+.nav__heading {
+  margin: 0 auto;
+  font-size: 18px;
+  font-weight: 800;
+}
