@@ -48,6 +48,7 @@ export function Form() {
       <form className="form__container" onSubmit={handleSubmit}>
         <Input
           value={data.card}
+          length={16}
           onChange={handleChange('card')}
           error={errors?.card}
           width='60%'
@@ -57,6 +58,7 @@ export function Form() {
         <div>
           <Input
             value={data.cvc}
+            length={3}
             onChange={handleChange('cvc')}
             error={errors?.cvc}
             width='80%'
@@ -65,10 +67,11 @@ export function Form() {
           />
           <Input
             value={data.expiry}
+            length={4}
             onChange={handleChange('expiry')}
             error={errors?.expiry}
             width='80%'
-            type="number"
+            type="text"
             placeholder="Expiry"
           />
         </div>

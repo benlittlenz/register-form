@@ -19,6 +19,7 @@ type FormPayload = {
 
 type InputProps = {
   value: string;
+  length: number;
   onChange: any;
   width: string;
   type: string;
