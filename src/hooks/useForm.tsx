@@ -29,7 +29,8 @@ export const useForm = ({
         const value = data[key];
         const {
           required,
-          pattern
+          pattern,
+          custom,
         } = validations[key];
         if (required?.value && !value) {
           valid = false;
@@ -39,6 +40,11 @@ export const useForm = ({
         if (pattern?.value && !RegExp(pattern.value).test(value)) {
           valid = false;
           newErrors[key] = pattern.message;
+        }
+        console.log("CUSTOM", custom?.isValid(value))
+        if (custom?.isValid && !custom?.isValid(value)) {
+          valid = false;
+          newErrors[key] = custom.message;
         }
       }
 

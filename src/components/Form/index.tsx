@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './index.css';
 import { useForm } from '../../hooks/useForm'
 import { Input } from './Input'
+import { isValidExpiry } from '../../utils/isValidExpiry'
 
 export function Form() {
   const {
@@ -25,11 +26,11 @@ export function Form() {
             "CVC number must only contains numbers",
         },
       },
+
       expiry: {
-        pattern: {
-          value: '^[0-9]',
-          message:
-            "Expiry date must only contains numbers",
+        custom: {
+          isValid: (value: string) => isValidExpiry(value),
+          message: 'Expiry date must be valid',
         },
       },
     },
@@ -48,6 +49,7 @@ export function Form() {
         <Input
           value={data.card}
           onChange={handleChange('card')}
+          error={errors?.card}
           width='60%'
           type="text"
           placeholder="Credit card number"
@@ -56,6 +58,7 @@ export function Form() {
           <Input
             value={data.cvc}
             onChange={handleChange('cvc')}
+            error={errors?.cvc}
             width='80%'
             type="text"
             placeholder="CVC"
@@ -63,13 +66,14 @@ export function Form() {
           <Input
             value={data.expiry}
             onChange={handleChange('expiry')}
+            error={errors?.expiry}
             width='80%'
-            type="text"
+            type="number"
             placeholder="Expiry"
           />
         </div>
-        <button>
-          Submit
+        <button className="form__submit">
+          <a>Submit</a>
         </button>
       </form>
     </div>

@@ -1,7 +1,3 @@
-type BackProps = {
-  setOpen: (t: boolean) => void;
-};
-
 export function Back({ setOpen }: BackProps) {
   return (
     <button onClick={() => setOpen(false)}>

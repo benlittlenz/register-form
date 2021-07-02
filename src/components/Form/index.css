@@ -27,3 +27,18 @@
   display: flex;
   align-items: center;
 }
+
+.form__submit {
+  border-radius: 6px;
+  width: 60%;
+  border: 2px solid gray;
+  margin: 0 auto;
+  padding: 3px 0;
+}
+
+.form__submit > a {
+  width: 100%;
+  display: inline-block;
+  line-height: 50px;
+  text-align: center;
+}

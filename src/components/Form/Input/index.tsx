@@ -1,15 +1,7 @@
 import React, { useState } from 'react';
 import './index.css';
 
-type InputProps = {
-  value: string;
-  onChange: any;
-  width: string;
-  type: string;
-  placeholder: string;
-}
-
-export function Input({ value, onChange, width, type, placeholder }: InputProps) {
+export function Input({ width, type, placeholder, value, onChange, error }: InputProps) {
   return (
     <>
       <label className="custom-field">
@@ -20,7 +12,7 @@ export function Input({ value, onChange, width, type, placeholder }: InputProps)
           value={value}
           onChange={onChange}
         />
-        <span className="error-message" aria-live="polite"></span>
+        <div style={{ width }} className="error-message" aria-live="polite">{error}</div>
       </label>
     </>
   )

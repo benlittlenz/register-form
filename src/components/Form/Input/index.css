@@ -2,7 +2,7 @@
   font-size: 14px;
   position: relative;
   border-top: 20px solid transparent;
-  /* --field-padding: 12px; */
+  --field-padding: 12px;
 }
 
 .custom-field input {
@@ -12,7 +12,8 @@
   padding: 12px;
   border-radius: 3px;
   font-size: 14px;
-  /* padding: var(--field-padding); */
+  padding: var(--field-padding);
+  outline: none;
 }
 
 .custom-field  {
@@ -36,4 +37,17 @@
     top 0.3s ease,
     color 0.3s ease,
     font-size 0.3s ease;
+}
+
+.custom-field .error-message {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  background: #d30909;
+  color: #fff;
+  padding: 3px var(--field-padding);
+  border-radius: 3px;
+}
+.custom-field .error-message:empty {
+  opacity: 0;
 }
